@@ -125,6 +125,46 @@
           }
         }
       }
+    },
+    "niflheim-lib": {
+      "root": "projects/niflheim-lib",
+      "sourceRoot": "projects/niflheim-lib/src",
+      "projectType": "library",
+      "prefix": "nf",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/niflheim-lib/tsconfig.lib.json",
+            "project": "projects/niflheim-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/niflheim-lib/src/test.ts",
+            "tsConfig": "projects/niflheim-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/niflheim-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/niflheim-lib/tsconfig.lib.json",
+              "projects/niflheim-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "niflheim-lib-app"
